@@ -1,0 +1,10 @@
+.postupload {
+	display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 25%;
+	width: 40%;
+	padding: 10px;
+	border: 2px solid lightgray;
+	margin: 20px auto 20px auto;
+}
