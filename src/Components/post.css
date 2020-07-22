@@ -22,3 +22,7 @@
 	padding: 10px;
 	font-weight: normal;
 }
+.comment {
+	width: 100%;
+	border: none;
+}

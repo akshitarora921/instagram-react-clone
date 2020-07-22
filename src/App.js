@@ -50,9 +50,16 @@ function App() {
 		};
 	}, [user, username]);
 	useEffect(() => {
-		db.collection('posts').onSnapshot((snapshot) => {
-			setPosts(snapshot.docs.map((doc) => doc.data()));
-		});
+		db.collection('posts')
+			.orderBy('timestamp', 'desc')
+			.onSnapshot((snapshot) => {
+				setPosts(
+					snapshot.docs.map((doc) => ({
+						id: doc.id,
+						post: doc.data(),
+					}))
+				);
+			});
 	}, []);
 
 	const classes = useStyles();
@@ -69,12 +76,16 @@ function App() {
 				});
 			})
 			.catch((err) => alert(err.message));
+
+		setSignupModalOpen(false);
 	};
 	const logIn = (e) => {
 		e.preventDefault();
 
 		auth.signInWithEmailAndPassword(email, password).catch((err) => alert(err.message));
 		setLoginModalOpen(false);
+		setEmail('');
+		setPassword('');
 	};
 
 	return (
@@ -97,9 +108,18 @@ function App() {
 					)}
 				</div>
 			</div>
-			{posts.map((post, index) => (
-				<Post key={index} username={post.username} imageUrl={post.imageUrl} caption={post.caption} />
-			))}
+			<div className="app-post">
+				{posts.map(({ id, post }) => (
+					<Post
+						key={id}
+						postId={id}
+						user={user}
+						username={post.username}
+						imageUrl={post.imageUrl}
+						caption={post.caption}
+					/>
+				))}
+			</div>
 			{user?.displayName ? <PostUpload username={user.displayName} /> : <h3>Login to upload</h3>}
 			<Modal
 				open={signupModalOpen}
