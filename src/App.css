@@ -1,16 +1,22 @@
-*{
-  margin:0;  
+* {
+	margin: 0;
 }
-.app{
-  background-color: #FAFAFA;
-  height: 100vh;
+.app {
+	background-color: #fafafa;
+	height: 100vh;
 }
 
-.app-header{
-  padding: 5px;
-  background-color: white;
-  border-bottom: 1px solid lightgray;
+.app-header {
+	padding: 5px;
+	background-color: white;
+	border-bottom: 1px solid lightgray;
+	display: flex;
+	justify-content: space-between;
 }
-.app-logo{
-  object-fit: contain;
+.app-logo {
+	object-fit: contain;
+}
+.app-signup {
+	display: flex;
+	flex-direction: column;
 }
