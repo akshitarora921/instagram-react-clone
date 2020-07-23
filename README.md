@@ -1,10 +1,15 @@
 # Instagram-react-clone
 A simple React based Instagram clone
 
+### Live 
+https://instagram-react-clone-1d8e6.web.app/
+
 ### Front-End 
 ReactJS
 ### Back-End 
 Firebase
+
+
 
 ## Getting started
 1. Ensure you have [nodejs] installed
